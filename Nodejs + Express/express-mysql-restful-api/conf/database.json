@@ -1,0 +1,14 @@
+{
+  "dev": {
+    "host": "localhost",
+    "driver": "mysql",
+    "user": "root",
+    "database": "wchen",
+    "password": "123"
+  },
+  "production": {
+    "driver": "mysql",
+    "user": "root",
+    "database": "wchen"
+  }
+}

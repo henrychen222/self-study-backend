@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AnalyticsMapper implements RowMapper<Analytics> {
+
+    @Override
     public Analytics mapRow(ResultSet rs, int rowNum) throws SQLException {
         Analytics analytics = new Analytics();
 

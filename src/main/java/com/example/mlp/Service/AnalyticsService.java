@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Transactional
@@ -15,8 +16,18 @@ public class AnalyticsService {
     @Autowired
     private AnalyticsDao analyticsDao;
 
-    public List<Analytics> retrieveAllChoiceCountTargetTiersOperation() {
+    public List<Analytics> retrieveAllChoiceCountTargetTiersService() {
         return analyticsDao.retrieveAllChoiceCountTargetTiersOperation();
     }
+
+    public List<Map<String, String>> getChoiceCountTargetsPercentageBySubclassService(String subclass) {
+        return analyticsDao.retrieveChoiceCountTargetsPercentageBySubclassOperation(subclass);
+    }
+
+    public List<Map<String, String>> getChoiceCountTargetsBySubclassService(String subclass) {
+        return analyticsDao.retrieveChoiceCountTargetsBySubclassOperation(subclass);
+    }
+
+
 
 }

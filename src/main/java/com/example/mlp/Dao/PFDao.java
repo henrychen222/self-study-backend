@@ -2,7 +2,6 @@ package com.example.mlp.Dao;
 
 import com.example.mlp.Mapper.PFMapper;
 import com.example.mlp.Model.PF;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;

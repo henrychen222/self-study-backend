@@ -14,7 +14,7 @@ public class PFService {
     private PFDao pfDao;
 
 
-    public List<PF> getAllPFAttrPlans() {
+    public List<PF> retrieveAllPFAttrPlans() {
         return pfDao.retrieveAllPlansOperation();
     }
 }

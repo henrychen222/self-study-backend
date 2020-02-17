@@ -21,7 +21,7 @@ public class AnalyticsDao {
     private JdbcTemplate jdbcTemplate;
 
     public List<Analytics> retrieveAllChoiceCountTargetTiersOperation() {
-//        JdbcTemplate jdbcTemplate = new JdbcTemplate();  // No DataSource Set
+        // JdbcTemplate jdbcTemplate = new JdbcTemplate(); // No DataSource Set
         String query = "SELECT * FROM mlp_analytics.choice_count_targets_tier";
         List<Analytics> result = jdbcTemplate.query(query, new AnalyticsMapper());
         return result;
@@ -85,74 +85,62 @@ public class AnalyticsDao {
         return arrCount;
     }
 
-
     public RequiredData getRequiredData(String subclass) {
         // const sub = '030500100125';
         String sub = subclass;
-//        String query = "SELECT sc_nbr,\n" +
-//                "       tier,\n" +
-//                "       ag,\n" +
-//                "       CASE\n" +
-//                "           WHEN substring(mth, 5, 2) IN ('01', '02', '03') THEN\n" +
-//                "               substring(mth, 1, 4) || '01'\n" +
-//                "           WHEN substring(mth, 5, 2) IN ('04', '05', '06') THEN\n" +
-//                "               substring(mth, 1, 4) || '02'\n" +
-//                "           WHEN substring(mth, 5, 2) IN ('07', '08', '09') THEN\n" +
-//                "               substring(mth, 1, 4) || '03'\n" +
-//                "           WHEN substring(mth, 5, 2) IN ('10', '11', '12') THEN\n" +
-//                "               substring(mth, 1, 4) || '04'\n" +
-//                "           ELSE\n" +
-//                "               '999999'\n" +
-//                "           END qtr,\n" +
-//                "       CASE\n" +
-//                "           WHEN substring(mth, 5, 2) IN ('01', '02', '03', '04', '05', '06') THEN\n" +
-//                "               substring(mth, 1, 4) || '01'\n" +
-//                "           WHEN substring(mth, 5, 2) IN ('07', '08', '09', '10', '11', '12') THEN\n" +
-//                "               substring(mth, 1, 4) || '02'\n" +
-//                "           ELSE\n" +
-//                "               '999999'\n" +
-//                "           END season,\n" +
-//                "       SUM(cc_target)\n" +
-//                "FROM mlp_analytics.choice_count_targets_tier\n" +
-//                "WHERE sc_nbr =" + sub + "\n" +
-//                "GROUP BY ROLLUP (sc_nbr, tier, ag, qtr, season)\n" +
-//                "ORDER BY sc_nbr, tier, ag, qtr, season;";
+        // String query = "SELECT sc_nbr,\n" +
+        // " tier,\n" +
+        // " ag,\n" +
+        // " CASE\n" +
+        // " WHEN substring(mth, 5, 2) IN ('01', '02', '03') THEN\n" +
+        // " substring(mth, 1, 4) || '01'\n" +
+        // " WHEN substring(mth, 5, 2) IN ('04', '05', '06') THEN\n" +
+        // " substring(mth, 1, 4) || '02'\n" +
+        // " WHEN substring(mth, 5, 2) IN ('07', '08', '09') THEN\n" +
+        // " substring(mth, 1, 4) || '03'\n" +
+        // " WHEN substring(mth, 5, 2) IN ('10', '11', '12') THEN\n" +
+        // " substring(mth, 1, 4) || '04'\n" +
+        // " ELSE\n" +
+        // " '999999'\n" +
+        // " END qtr,\n" +
+        // " CASE\n" +
+        // " WHEN substring(mth, 5, 2) IN ('01', '02', '03', '04', '05', '06') THEN\n" +
+        // " substring(mth, 1, 4) || '01'\n" +
+        // " WHEN substring(mth, 5, 2) IN ('07', '08', '09', '10', '11', '12') THEN\n" +
+        // " substring(mth, 1, 4) || '02'\n" +
+        // " ELSE\n" +
+        // " '999999'\n" +
+        // " END season,\n" +
+        // " SUM(cc_target)\n" +
+        // "FROM mlp_analytics.choice_count_targets_tier\n" +
+        // "WHERE sc_nbr =" + sub + "\n" +
+        // "GROUP BY ROLLUP (sc_nbr, tier, ag, qtr, season)\n" +
+        // "ORDER BY sc_nbr, tier, ag, qtr, season;";
 
-        String query = "SELECT sc_nbr,\n" +
-                "       tier,\n" +
-                "       ag,\n" +
-                "       CASE\n" +
-                "           WHEN substring(mth, 5, 2) IN ('01', '02', '03') THEN\n" +
-                "               substring(mth, 1, 4) || '01'\n" +
-                "           WHEN substring(mth, 5, 2) IN ('04', '05', '06') THEN\n" +
-                "               substring(mth, 1, 4) || '02'\n" +
-                "           WHEN substring(mth, 5, 2) IN ('07', '08', '09') THEN\n" +
-                "               substring(mth, 1, 4) || '03'\n" +
-                "           WHEN substring(mth, 5, 2) IN ('10', '11', '12') THEN\n" +
-                "               substring(mth, 1, 4) || '04'\n" +
-                "           ELSE\n" +
-                "               '999999'\n" +
-                "           END qtr,\n" +
-                "       CASE\n" +
-                "           WHEN substring(mth, 5, 2) IN ('01', '02', '03', '04', '05', '06') THEN\n" +
-                "               substring(mth, 1, 4) || '01'\n" +
-                "           WHEN substring(mth, 5, 2) IN ('07', '08', '09', '10', '11', '12') THEN\n" +
-                "               substring(mth, 1, 4) || '02'\n" +
-                "           ELSE\n" +
-                "               '999999'\n" +
-                "           END season,\n" +
-                "       SUM(cc_target)\n" +
-                "FROM mlp_analytics.choice_count_targets_tier\n" +
-                "WHERE sc_nbr = '030500100125'\n" +
-                "GROUP BY ROLLUP (sc_nbr, tier, ag, qtr, season)\n" +
-                "ORDER BY sc_nbr, tier, ag, qtr, season;";
+        String query = "SELECT sc_nbr,\n" + "       tier,\n" + "       ag,\n" + "       CASE\n"
+                + "           WHEN substring(mth, 5, 2) IN ('01', '02', '03') THEN\n"
+                + "               substring(mth, 1, 4) || '01'\n"
+                + "           WHEN substring(mth, 5, 2) IN ('04', '05', '06') THEN\n"
+                + "               substring(mth, 1, 4) || '02'\n"
+                + "           WHEN substring(mth, 5, 2) IN ('07', '08', '09') THEN\n"
+                + "               substring(mth, 1, 4) || '03'\n"
+                + "           WHEN substring(mth, 5, 2) IN ('10', '11', '12') THEN\n"
+                + "               substring(mth, 1, 4) || '04'\n" + "           ELSE\n" + "               '999999'\n"
+                + "           END qtr,\n" + "       CASE\n"
+                + "           WHEN substring(mth, 5, 2) IN ('01', '02', '03', '04', '05', '06') THEN\n"
+                + "               substring(mth, 1, 4) || '01'\n"
+                + "           WHEN substring(mth, 5, 2) IN ('07', '08', '09', '10', '11', '12') THEN\n"
+                + "               substring(mth, 1, 4) || '02'\n" + "           ELSE\n" + "               '999999'\n"
+                + "           END season,\n" + "       SUM(cc_target)\n"
+                + "FROM mlp_analytics.choice_count_targets_tier\n" + "WHERE sc_nbr = '030500100125'\n"
+                + "GROUP BY ROLLUP (sc_nbr, tier, ag, qtr, season)\n" + "ORDER BY sc_nbr, tier, ag, qtr, season;";
 
+        System.out.println(query);
         List<AnalyticsResultSet> sqlResult = jdbcTemplate.query(query, new AnalyticsResultSetMapper());
 
         RequiredData requiredData = processData(sqlResult);
         return requiredData;
     }
-
 
     public RequiredData processData(List<AnalyticsResultSet> sqlResult) {
         String totalA = "", A1 = "", A2 = "", A3 = "", A4 = "";
@@ -163,6 +151,7 @@ public class AnalyticsDao {
         try {
 
             for (AnalyticsResultSet i : sqlResult) {
+                System.out.println(i);
                 if (i.getQtr() == null && i.getSeason() == null) {
                     // get totalAvg
                     if (i.getAg() == null) {
@@ -193,6 +182,7 @@ public class AnalyticsDao {
                         }
                         if (i.getAg().equals("4")) {
                             A4 = i.getSum();
+                            // System.out.println("A4 is" + A4);
                         }
                     }
 
@@ -200,6 +190,7 @@ public class AnalyticsDao {
                     if (i.getTier().equals("B")) {
                         if (i.getAg().equals("1")) {
                             B1 = i.getSum();
+                            // System.out.println("B1 is" + B1);
                         }
                         if (i.getAg().equals("2")) {
                             B2 = i.getSum();
@@ -244,12 +235,32 @@ public class AnalyticsDao {
                         }
                     }
 
-
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        System.out.println("totalA: " + totalA);
+        System.out.println("totalB: " + totalB);
+        System.out.println("totalC: " + totalC);
+        System.out.println("totalD: " + totalD);
+        System.out.println("A1: " + A1);
+        System.out.println("A2: " + A2);
+        System.out.println("A3: " + A3);
+        System.out.println("A4: " + A4);
+        System.out.println("B1: " + B1);
+        System.out.println("B2: " + B2);
+        System.out.println("B3: " + B3);
+        System.out.println("B4: " + B4);
+        System.out.println("C1: " + C1);
+        System.out.println("C2: " + C2);
+        System.out.println("C3: " + C3);
+        System.out.println("C4: " + C4);
+        System.out.println("D1: " + D1);
+        System.out.println("D2: " + D2);
+        System.out.println("D3: " + D3);
+        System.out.println("D4: " + D4);
 
         RequiredData requiredData = new RequiredData();
 
@@ -280,7 +291,6 @@ public class AnalyticsDao {
 
         return requiredData;
     }
-
 
     public String calculation(String property, String total) {
         int digit = Integer.parseInt(property) / Integer.parseInt(total) * 100;

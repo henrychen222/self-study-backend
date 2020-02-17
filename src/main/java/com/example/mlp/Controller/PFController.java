@@ -16,12 +16,7 @@ public class PFController {
 
     @GetMapping("/getAllPFAttrPlans")
     public List<PF> getAllPFAttrPlans() {
-        return pfService.getAllPFAttrPlans();
+        return pfService.retrieveAllPFAttrPlans();
     }
 
 }
-
-
-
-
-
